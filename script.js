@@ -102,15 +102,18 @@ function passGuess() {
     if (r === -1) {
         $('#guess-submit').prop("disabled", true);
         setTimeout(() => $('#guess-submit').prop("disabled", false), 3000);
-    } else if (r > 0) {
-        if (r == 2) {
-            $('#guess-submit').prop("onclick", null).off("click");
-            $('#guess-submit').html("&#127881;");
-        } else if (r == 1) {
-            $('#guess-submit').prop("disabled", true);
-            $('#guess-submit').html("&#128546;");
+    } else {
+        if (r > 0) {
+            if (r == 2) {
+                $('#guess-submit').prop("onclick", null).off("click");
+                $('#guess-submit').html("&#127881;");
+            } else if (r == 1) {
+                $('#guess-submit').prop("disabled", true);
+                $('#guess-submit').html("&#128546;");
+            }
+            $('#target-name').css('visibility', 'visible');
         }
-        $('#target-name').css('visibility', 'visible');
+        $('#guess-input').val('');
     }
 
 }
