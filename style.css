@@ -1,0 +1,133 @@
+body {
+    color: #d8d8d8;
+    background-color: #181818;
+    font-family: monospace;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 12pt;
+    max-width: 480px;
+}
+
+.target-container {
+    text-align: center;
+    width: 100%;
+}
+
+.target-container > h1 {
+    font-size: 32pt;
+    margin: 0;
+}
+
+.target-subtitle {
+    margin-top: 0;
+    margin-bottom: 16pt;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+#target-name {
+    visibility: hidden;
+    margin-top: 3em;
+    margin-bottom: 0;
+}
+
+.guesses-container {
+    margin: 1em 1em;
+    border: 1px #d8d8d8 solid;
+    display: grid;
+    grid-row-gap: 1px;
+    grid-template-rows: repeat(6, 1.5em);
+    grid-template-columns: auto 1.5em 1.5em 1.5em 1.5em 1.5em calc(7ch + 1.5em);
+    background-color: #d8d8d8;
+}
+
+.guesses-container > div {
+    background-color: #181818;
+}
+
+.guess-diff {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.guess-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.input-container {
+    margin: 0 1em;
+    display: flex;
+    gap: 0.5ch;
+}
+
+.input-container > input {
+    flex: 1 1 auto;
+    font-family: monospace;
+    color-scheme: dark;
+}
+
+.input-container > button {
+    flex: 0 0 auto;
+    background-color: #a1b56c;
+    color: #181818;
+    height: 100%;
+}
+
+.input-container > button:disabled,
+.input-container > button[disabled] {
+    background-color: #ab4642;
+    color: #d8d8d8;
+}
+
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-menu {
+    margin: 0 1em;
+    max-width: 100%;
+    list-style-type: none;
+    padding-left: 4px;
+    max-height: 10em;
+    overflow-y: scroll;
+    border: 1px #d8d8d8 solid;
+}
+
+.guess-sq.green {
+  background-color: #a1b56c;
+}
+.guess-sq.yellow {
+  background-color: #f7ca88;
+}
+.guess-sq.gray {
+  background-color: #383838;
+}
+
+
+.red {
+  color: #ab4642;
+}
+.green {
+  color: #a1b56c;
+}
+.yellow {
+  color: #f7ca88;
+}
+.blue {
+  color: #7cafc2;
+}
+.magenta {
+  color: #ba8baf;
+}
+.cyan {
+  color: #86c1b9;
+}
+.orange {
+  color: #dc9656;
+}
+
