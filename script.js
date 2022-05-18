@@ -9,18 +9,17 @@ const MIN_RANK = DATA[0].rank;
 const MAX_RANK = DATA[DATA.length - 1].rank;
 
 const MAX_RANK_DIFF = Math.max(country.rank - MIN_RANK, MAX_RANK - country.rank);
-console.log(MAX_RANK_DIFF);
 function rankDiffPercent(target, guess) {
     return 100 - Math.ceil(100 * Math.abs(target.rank - guess.rank) / MAX_RANK_DIFF);
 }
 
 var guessNumber = 0;
+var lines = []
 
 function percentToBlocks(percent) {
     var blockFills = [0, 0, 0, 0, 0];
     for (let i = 0; i < 5; i++) {
         var blockAmount = percent - i * 20;
-        console.log(blockAmount);
         if (blockAmount >= 20) {
             blockFills[i] = 2;
         } else if (blockAmount >= 10) {
@@ -71,10 +70,9 @@ function submitGuess(countryName) {
     $('#guess-name-' + guessNumber).text(guessedCountry.name);
     var rankDP = rankDiffPercent(country, guessedCountry);
     var blockFills = percentToBlocks(rankDP);
+    lines.push(blockFills);
 
     for (let i = 1; i <= 5; i++) {
-        console.log(`#guess-sq-${i}-${guessNumber}`);
-        console.log(blockFills[i - 1]);
         $(`#guess-sq-${i}-${guessNumber}`).addClass(["gray", "yellow", "green"][blockFills[i - 1]]);
     }
 
@@ -112,15 +110,38 @@ function passGuess() {
                 $('#guess-submit').html("&#128546;");
             }
             $('#target-name').css('visibility', 'visible');
+            $('#share').show();
         }
         $('#guess-input').val('');
     }
 
 }
 
+function copyGame() {
+    var guessesToWin = guessNumber;
+    if (lines[lines.length - 1][4] != 2) {
+        guessesToWin = "X";
+    }
+    var copyText = "econle " + guessesToWin + "/6\n\n";
+    lines.forEach(line => {
+        line.forEach(fill => copyText += String.fromCodePoint([0x2b1b, 0x1f7e8, 0x1f7e9][fill]));
+        copyText += "\n";
+    });
+    copyText += "\n" + window.location.host;
+
+    navigator.clipboard.writeText(copyText);
+    $('#share').prop("disabled", true).text("Copied");
+    setTimeout(() => $('#share').prop("disabled", false).text("Share"), 3000);
+}
+
 $(() => {
-    console.log(country);
-    $('#guess-input').autocomplete({source: DATA.map(c => c.name).slice().sort()});
+    $('#guess-input').autocomplete({
+        source: DATA.map(c => c.name).slice().sort(),
+        position: {
+            my: "left bottom",
+            at: "left top",
+            collision: "flip" }
+    });
 
     var targetMetric = millionUSDToString(country.usdm);
     $('#target-value').text(targetMetric.econ);
