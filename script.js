@@ -3,7 +3,13 @@ const INITIAL_DATE = new Date(2022, 4, 18, 23, 59, 59, 999);
 const MIN_RANK = DATA[0].rank;
 const MAX_RANK = DATA[DATA.length - 1].rank;
 const GAME_NUMBER = Math.ceil((new Date() - INITIAL_DATE) / (1000 * 60 * 60 * 24)); Math.seedrandom(GAME_NUMBER);
-const COUNTRY = DATA[parseInt(Math.random() * DATA.length)];
+
+function getGameNumberCountry(gameNumber) {
+    Math.seedrandom(gameNumber);
+    return DATA[parseInt(Math.random() * DATA.length)];
+}
+
+const COUNTRY = getGameNumberCountry(GAME_NUMBER);
 const MAX_RANK_DIFF = Math.max(COUNTRY.rank - MIN_RANK, MAX_RANK - COUNTRY.rank);
 
 function rankDiffPercent(target, guess) {
@@ -147,6 +153,9 @@ function copyGame() {
 }
 
 $(() => {
+
+    $('#game-number').text(GAME_NUMBER);
+
     $('#guess-input').autocomplete({
         source: DATA.map(c => c.name).slice().sort(),
         position: {

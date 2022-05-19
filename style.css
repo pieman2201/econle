@@ -9,6 +9,34 @@ body {
 .toolbar {
     background-color: #383838;
     padding: 0.25em 0.25em;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 8ch auto 8ch;
+}
+
+.toolbar > button {
+    width: fit-content;
+}
+
+#info-button {
+    margin-right: auto;
+}
+
+#stats-button {
+    margin-left: auto;
+}
+
+.game-name-container {
+    text-align: center;
+    color: #f8f8f8;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-name {
+    margin: auto;
 }
 
 #game-container {
@@ -69,8 +97,8 @@ button {
 
 #target-name {
     visibility: hidden;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
 }
 
 .guesses-container {
