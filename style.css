@@ -1,18 +1,35 @@
 body {
     background-color: #181818;
     margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    background-color: #383838;
+    padding: 0.25em 0.25em;
 }
 
 #game-container {
     color: #d8d8d8;
     background-color: #181818;
     font-family: monospace;
-    margin: auto;
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     font-size: 12pt;
+    width: 100%;
     max-width: 480px;
-    overflow-y: hidden;
+    overflow-y: scroll;
+}
+
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .target-container {
@@ -27,6 +44,7 @@ body {
 
 .share-container {
     margin-top: 1em;
+    margin-bottom: 1em;
     text-align: center;
 }
 
@@ -51,8 +69,8 @@ button {
 
 #target-name {
     visibility: hidden;
-    margin-top: 3em;
-    margin-bottom: 0;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 .guesses-container {
@@ -77,11 +95,15 @@ button {
     padding-inline-end: 0.5ch;
 }
 
-.guess-name {
+.guess-name-container {
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
     padding-inline-start: 0.5ch;
+}
+
+.guess-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .guess-sq-container {
@@ -98,6 +120,7 @@ button {
     margin: 0 1em;
     display: flex;
     gap: 0.5ch;
+    min-width: 8ch;
 }
 
 .input-container > input {

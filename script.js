@@ -109,7 +109,6 @@ function passGuess(guessText) {
         setTimeout(() => $('#guess-submit').prop("disabled", false), 3000);
     } else {
         Cookies.set(GAME_NUMBER, JSON.stringify(guesses));
-        console.log(JSON.parse(Cookies.get(GAME_NUMBER)));
         if (r > 0) {
             if (r == 2) {
                 $('#guess-submit').prop("onclick", null).off("click");
@@ -129,7 +128,6 @@ function passGuess(guessText) {
 }
 
 function copyGame() {
-    console.log(guesses);
     var guessesToWin = guessNumber;
     if (!(guesses[guesses.length - 1].name === COUNTRY.name)) {
         guessesToWin = "X";
@@ -149,7 +147,6 @@ function copyGame() {
 }
 
 $(() => {
-    console.log(GAME_NUMBER);
     $('#guess-input').autocomplete({
         source: DATA.map(c => c.name).slice().sort(),
         position: {
@@ -162,8 +159,6 @@ $(() => {
     $('#target-value').text(targetMetric.econ);
     $('#target-unit').text(targetMetric.unit);
     $('#target-name').text(COUNTRY.name);
-
-    console.log(Cookies.get(GAME_NUMBER));
 
     if (Cookies.get(GAME_NUMBER) === undefined) {
         // write new cookie
