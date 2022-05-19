@@ -67,11 +67,12 @@ button {
 
 .guesses-container > div {
     background-color: #181818;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .guess-diff {
-    display: flex;
-    flex-direction: row;
     justify-content: flex-end;
     padding-inline-end: 0.5ch;
 }
@@ -81,6 +82,16 @@ button {
     white-space: nowrap;
     text-overflow: ellipsis;
     padding-inline-start: 0.5ch;
+}
+
+.guess-sq-container {
+    margin: 0;
+}
+
+.guess-sq {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }
 
 .input-container {
