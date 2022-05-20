@@ -114,7 +114,7 @@ function passGuess(guessText) {
         $('#guess-submit').prop("disabled", true);
         setTimeout(() => $('#guess-submit').prop("disabled", false), 3000);
     } else {
-        Cookies.set(GAME_NUMBER, JSON.stringify(guesses));
+        Cookies.set(GAME_NUMBER, JSON.stringify(guesses), {expires: 365 * 100});
         if (r > 0) {
             if (r == 2) {
                 $('#guess-submit').prop("onclick", null).off("click");
@@ -203,7 +203,7 @@ $(() => {
 
     if (Cookies.get(GAME_NUMBER) === undefined) {
         // write new cookie
-        Cookies.set(GAME_NUMBER, JSON.stringify(guesses));
+        Cookies.set(GAME_NUMBER, JSON.stringify(guesses), {expires: 365 * 100});
     } else {
         savedGuesses = JSON.parse(Cookies.get(GAME_NUMBER));
         savedGuesses.forEach(guess => passGuess(guess.name));
