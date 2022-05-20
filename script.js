@@ -90,7 +90,7 @@ function submitGuess(countryName) {
     animateRowSquares(guessNumber);
 
     if (rankDP === 100) {
-        $(`#guess-diff-${guessNumber}` + " > .currency").text("WON");
+        $(`#guess-diff-${guessNumber}` + " > .currency").text("GG");
         return 2;
     }
 
