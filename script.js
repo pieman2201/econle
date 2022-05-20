@@ -152,6 +152,38 @@ function copyGame() {
     setTimeout(() => $('#share').prop("disabled", false).text("Share"), 3000);
 }
 
+function showInfo() {
+    $('#info-button').text("Close");
+    $('#info-button').attr("onclick", "showGame()");
+    $('#stats-button').css('visibility', 'hidden');
+
+    $('#game-container').hide();
+    $('#info-container').show();
+    $('#stats-container').hide();
+}
+function showStats() {
+    $('#stats-button').text("Close");
+    $('#stats-button').attr("onclick", "showGame()");
+    $('#info-button').css('visibility', 'hidden');
+
+    $('#game-container').hide();
+    $('#info-container').hide();
+    $('#stats-container').show();
+}
+function showGame() {
+    $('#info-button').text("Info");
+    $('#info-button').attr("onclick", "showInfo()");
+    $('#stats-button').css('visibility', 'visible');
+
+    $('#stats-button').text("Stats");
+    $('#stats-button').attr("onclick", "showStats()");
+    $('#info-button').css('visibility', 'visible');
+
+    $('#game-container').show();
+    $('#info-container').hide();
+    $('#stats-container').hide();
+}
+
 $(() => {
 
     $('#game-number').text(GAME_NUMBER);

@@ -15,98 +15,160 @@
 
     <body>
         <div class="toolbar">
-            <button id="info-button" onclick="null">Info</button>
+            <button id="info-button" onclick="showInfo()">Info</button>
             <div class="game-name-container"><div class="game-name">econle <span id="game-number" class="yellow"></span></div></div>
-            <button id="stats-button" onclick="null">Stats</button>
+            <button id="stats-button" onclick="showStats()">Stats</button>
         </div>
-        <div id="game-container" style="visibility: hidden">
-            <div class="target-container">
-                <p id="target-name" class="magenta" style="opacity: 0"></p>
-                <h1><span class="green">$</span><span id="target-value"></span><span class="blue" id="target-unit"></span></h1>
-                <p class="target-subtitle">Nominal GDP</p>
-            </div>
-            <div class="guesses-container">
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-1"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-1"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-1"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-1"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-1"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-1"></div></div>
-                <div class="guess-diff" id="guess-diff-1">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
+        <div class="content-container">
+            <div id="game-container" class="nonwide-content-container" style="visibility: hidden">
+                <div class="target-container">
+                    <p id="target-name" class="magenta" style="opacity: 0"></p>
+                    <h1><span class="green">$</span><span id="target-value"></span><span class="blue" id="target-unit"></span></h1>
+                    <p class="target-subtitle">Nominal GDP</p>
                 </div>
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-2"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-2"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-2"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-2"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-2"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-2"></div></div>
-                <div class="guess-diff" id="guess-diff-2">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
+                <div class="guesses-container">
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-1"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-1"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-1"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-1"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-1"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-1"></div></div>
+                    <div class="guess-diff" id="guess-diff-1">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-2"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-2"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-2"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-2"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-2"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-2"></div></div>
+                    <div class="guess-diff" id="guess-diff-2">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-3"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-3"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-3"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-3"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-3"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-3"></div></div>
+                    <div class="guess-diff" id="guess-diff-3">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-4"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-4"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-4"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-4"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-4"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-4"></div></div>
+                    <div class="guess-diff" id="guess-diff-4">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-5"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-5"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-5"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-5"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-5"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-5"></div></div>
+                    <div class="guess-diff" id="guess-diff-5">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
+                    <div class="guess-name-container"><div class="guess-name" id="guess-name-6"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-6"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-6"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-6"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-6"></div></div>
+                    <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-6"></div></div>
+                    <div class="guess-diff" id="guess-diff-6">
+                        <span class="direction magenta"></span>
+                        <span class="currency green"></span>
+                        <span class="value"></span>
+                        <span class="unit blue"></span>
+                    </div>
                 </div>
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-3"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-3"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-3"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-3"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-3"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-3"></div></div>
-                <div class="guess-diff" id="guess-diff-3">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
-                </div>
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-4"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-4"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-4"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-4"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-4"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-4"></div></div>
-                <div class="guess-diff" id="guess-diff-4">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
-                </div>
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-5"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-5"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-5"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-5"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-5"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-5"></div></div>
-                <div class="guess-diff" id="guess-diff-5">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
-                </div>
-                <div class="guess-name-container"><div class="guess-name" id="guess-name-6"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-1-6"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-2-6"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-3-6"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-4-6"></div></div>
-                <div class="guess-sq-container"><div class="guess-sq"   id="guess-sq-5-6"></div></div>
-                <div class="guess-diff" id="guess-diff-6">
-                    <span class="direction magenta"></span>
-                    <span class="currency green"></span>
-                    <span class="value"></span>
-                    <span class="unit blue"></span>
-                </div>
-            </div>
 
-            <div class="input-container">
-                <input id="guess-input">
-                <button id="guess-submit" onclick="passGuess($('#guess-input').val())">&#11157;</button>
-            </div>
+                <div class="input-container">
+                    <input id="guess-input">
+                    <button id="guess-submit" onclick="passGuess($('#guess-input').val())">&#11157;</button>
+                </div>
 
-            <div class="share-container">
-                <button id="share" style="display: none" onclick="copyGame()">Share</button>
+                <div class="share-container">
+                    <button id="share" style="display: none" onclick="copyGame()">Share</button>
+                </div>
+            </div>
+            <div id="info-container" class="overlay-container" style="display: none">
+                <h2>How to play <span class="yellow">econle</span></h2>
+                <div class="nonwide-content-container">
+                    <p>Guess the economy of the day within 6 tries!</p>
+                    <p>Type your guess and press the <span class="green">submit</span> button.
+                    Suggestions will appear as you type. Each guess must be a valid country/territory
+                    (if the button turns <span class="red">red</span>, it means you've tried to give an invalid answer).</p>
+
+                    <p>With each guess, you'll see two metrics: your <span class="yellow">econle</span> score (the colored
+                    <span class="green">bl</span><span class="yellow">o</span>cks), and your guess distance (the
+                    <span class="magenta">n</span><span class="green">u</span>mbe<span class="blue">r</span> on the right).</p>
+                    <p>Your <span class="yellow">econle</span> score represents how close your guess is to
+                    the GDP rank of the target country, and your guess distance is the difference between your guess GDP and the target
+                    in absolute terms.<p>
+                    <p>For example, let's assume today's country is <span class="red">Japan</span> with a GDP of
+                    <span class="green">$</span>5.05<span class="blue">T</span>. If you guess <span class="cyan">Moldova</span>, you'll see this:</p>
+                    <div class="sample-guess-container">
+                        <div class="guess-name-container"><div class="guess-name">Moldova</div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-diff">
+                            <span class="direction magenta">-</span>
+                            <span class="currency green">$</span>
+                            <span class="value">5.04</span>
+                            <span class="unit blue">T</span>
+                        </div>
+                    </div>
+                    <span class="red">Japan</span> is ranked as the 3rd largest economy in the world, whereas <span class="cyan">Moldova</span>
+                    is ranked much lower, so this guess won't have a great <span class="yellow">econle</span> score. The GDP of
+                    <span class="cyan">Moldova</span> is <span class="green">$</span>5.04<span class="blue">T</span>
+                    <span class="magenta">less</span> than that of <span class="red">Japan</span>, as shown on the right.
+                    <p>If you guess <span class="blue">United States</span>, you'll see this:</p>
+                    <div class="sample-guess-container">
+                        <div class="guess-name-container"><div class="guess-name">United States</div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
+                        <div class="guess-diff">
+                            <span class="direction magenta">+</span>
+                            <span class="currency green">$</span>
+                            <span class="value">15.8</span>
+                            <span class="unit blue">T</span>
+                        </div>
+                    </div>
+                    As the largest economy in the world, the <span class="blue">US</span> GDP is much <span class="magenta">higher</span>
+                    than that of <span class="red">Japan</span>, so the absolute difference is greater than the first guess.
+                    However, because the ranks of the two economies are so similar (<span class="blue">1</span> vs. <span class="red">3</span>),
+                    the <span class="yellow">econle</span> score is actually much better!
+                </div>
+            </div>
+            <div id="stats-container" class="overlay-container" style="display: none">
+                <h2>Coming soon!</h2>
+                <div class="nonwide-content-container">
+                </div>
             </div>
         </div>
     </body>
