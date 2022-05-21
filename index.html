@@ -1,5 +1,11 @@
 <html>
     <head>
+        <link rel="icon" href="/icon.png">
+        <link rel="apple-touch-icon" href="/icon.png">
+        <link rel="manifest" href="/manifest.json">
+
+        <meta name="description" content="Guess the economy of the day!"/>
+
         <title>econle</title>
 
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -103,7 +109,7 @@
 
                 <div class="input-container">
                     <input id="guess-input">
-                    <button id="guess-submit" onclick="passGuess($('#guess-input').val())">&#11157;</button>
+                    <button id="guess-submit" onclick="passGuess($('#guess-input').val().trim())">&#11157;</button>
                 </div>
 
                 <div class="share-container">
@@ -121,9 +127,9 @@
                     <p>With each guess, you'll see two metrics: your <span class="yellow">econle</span> score (the colored
                     <span class="green">bl</span><span class="yellow">o</span>cks), and your guess distance (the
                     <span class="magenta">n</span><span class="green">u</span>mbe<span class="blue">r</span> on the right).</p>
-                    <p>Your <span class="yellow">econle</span> score represents how close your guess is to
-                    the GDP rank of the target country, and your guess distance is the difference between your guess GDP and the target
-                    in absolute terms.<p>
+                    <p>Your <span class="yellow">econle</span> score represents how good your guess is; it's calculated from the
+                    difference in GDP ranks between your guess and the target country. Your guess distance is the difference
+                    between your guess GDP and the target in absolute terms.<p>
                     <p>For example, let's assume today's country is <span class="red">Japan</span> with a GDP of
                     <span class="green">$</span>5.05<span class="blue">T</span>. If you guess <span class="cyan">Moldova</span>, you'll see this:</p>
                     <div class="sample-guess-container">
