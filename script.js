@@ -201,6 +201,11 @@ $(() => {
     $('#target-unit').text(targetMetric.unit);
     $('#target-name').text(COUNTRY.name);
 
+    if (Cookies.get("VISITED_BEFORE") === undefined) {
+        showInfo();
+        Cookies.set("VISITED_BEFORE", "yes", {expires: 365 * 100});
+    }
+
     if (Cookies.get(GAME_NUMBER) === undefined) {
         // write new cookie
         Cookies.set(GAME_NUMBER, JSON.stringify(guesses), {expires: 365 * 100});
