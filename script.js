@@ -124,8 +124,8 @@ function passGuess(guessText) {
                 $('#guess-submit').html("&#128546;");
             }
             $('#guess-input').prop("disabled", true);
-            $('#target-name').css('visibility', 'visible');
-            $('#target-name').animate({opacity: 1}).animate({opacity: 0}).animate({opacity: 1});
+            $('#target-name').text(COUNTRY.name);
+            $('#target-name').animate({opacity: 0}).animate({opacity: 1}).animate({opacity: 0}).animate({opacity: 1});
             $('#share').show();
         }
         $('#guess-input').val('');
@@ -199,7 +199,7 @@ $(() => {
     var targetMetric = millionUSDToString(COUNTRY.usdm);
     $('#target-value').text(targetMetric.econ);
     $('#target-unit').text(targetMetric.unit);
-    $('#target-name').text(COUNTRY.name);
+    $('#target-name').text(COUNTRY.area);
 
     if (Cookies.get("VISITED_BEFORE") === undefined) {
         showInfo();
