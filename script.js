@@ -2,11 +2,20 @@ const DATA = JSON.parse(decodeURIComponent(window.atob(BLOB)));
 const INITIAL_DATE = new Date(2022, 4, 18, 23, 59, 59, 999);
 const MIN_RANK = DATA[0].rank;
 const MAX_RANK = DATA[DATA.length - 1].rank;
-const GAME_NUMBER = Math.ceil((new Date() - INITIAL_DATE) / (1000 * 60 * 60 * 24)); Math.seedrandom(GAME_NUMBER);
+const GAME_NUMBER = Math.ceil((new Date() - INITIAL_DATE) / (1000 * 60 * 60 * 24));
 
 function getGameNumberCountry(gameNumber) {
-    Math.seedrandom(gameNumber);
-    return DATA[parseInt(Math.random() * DATA.length)];
+    var countryData = JSON.parse(JSON.stringify(DATA)) // deep copy
+    Math.seedrandom("econle");
+    for (var i = 1; i < gameNumber; i++) {
+        var chosenIndex = parseInt(Math.random() * countryData.length);
+        countryData.splice(chosenIndex, 1);
+        if (countryData.length < DATA.length * 0.1) {
+            // threshold for re-adding countries
+            countryData.push.apply(countryData, DATA);
+        }
+    }
+    return countryData[parseInt(Math.random() * countryData.length)];
 }
 
 const COUNTRY = getGameNumberCountry(GAME_NUMBER);
