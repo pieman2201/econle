@@ -230,6 +230,28 @@ button {
   color: #dc9656;
 }
 
+.redbg {
+  background: #ab4642;
+}
+.greenbg {
+  background: #a1b56c;
+}
+.yellowbg {
+  background: #f7ca88;
+}
+.bluebg {
+  background: #7cafc2;
+}
+.magentabg {
+  background: #ba8baf;
+}
+.cyanbg {
+  background: #86c1b9;
+}
+.orangebg {
+  background: #dc9656;
+}
+
 .overlay-container {
     background-color: #282828;
     display: flex;
@@ -266,4 +288,45 @@ button {
     grid-template-rows: 1.5em;
     grid-template-columns: auto 1.5em 1.5em 1.5em 1.5em 1.5em calc(7ch + 1.5em);
     background-color: #d8d8d8;
+}
+
+.high-level-stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.high-level-stat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.high-level-stat-title {
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.high-level-stat-value {
+    font-size: 32pt;
+}
+
+.stat-table {
+    color: inherit;
+    font: inherit;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.stat-bar-container {
+    width: 100%;
+}
+
+.stat-counter {
+    text-align: right;
+}
+
+.stat-bar {
+    height: 1em;
+    width: 0;
 }

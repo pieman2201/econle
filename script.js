@@ -4,11 +4,28 @@ const MIN_RANK = DATA[0].rank;
 const MAX_RANK = DATA[DATA.length - 1].rank;
 const GAME_NUMBER = Math.ceil((new Date() - INITIAL_DATE) / (1000 * 60 * 60 * 24));
 
+
+var statMap = {
+    total: 0,
+    wins: [0, 0, 0, 0, 0, 0]
+}
 function getGameNumberCountry(gameNumber) {
     var countryData = JSON.parse(JSON.stringify(DATA)) // deep copy
     Math.seedrandom("econle");
     for (var i = 1; i < gameNumber; i++) {
         var chosenIndex = parseInt(Math.random() * countryData.length);
+        var historicalCountry = countryData[chosenIndex];
+        if (Cookies.get(i) !== undefined) {
+            var historicalGuesses = JSON.parse(Cookies.get(i));
+            if (historicalGuesses.length > 0) {
+                var lastGuess = historicalGuesses.slice(-1)[0]
+                if (lastGuess.name === historicalCountry.name) {
+                    winIdx = Math.min(historicalGuesses.length - 1, 5);
+                    statMap.wins[winIdx]++;
+                }
+                statMap.total++;
+            }
+        }
         countryData.splice(chosenIndex, 1);
         if (countryData.length < DATA.length * 0.1) {
             // threshold for re-adding countries
@@ -128,10 +145,13 @@ function passGuess(guessText) {
             if (r == 2) {
                 $('#guess-submit').prop("onclick", null).off("click");
                 $('#guess-submit').html("&#127881;");
+                statMap.wins[Math.min(guesses.length - 1, 5)]++;
             } else if (r == 1) {
                 $('#guess-submit').prop("disabled", true);
                 $('#guess-submit').html("&#128546;");
             }
+            statMap.total++;
+
             $('#guess-input').prop("disabled", true);
             $('#target-name').text(COUNTRY.name);
             $('#target-name').animate({opacity: 0}).animate({opacity: 1}).animate({opacity: 0}).animate({opacity: 1});
@@ -161,6 +181,20 @@ function copyGame() {
     setTimeout(() => $('#share').prop("disabled", false).text("Share"), 3000);
 }
 
+function generateStats() {
+    $('#stats-total').text(statMap.total);
+
+    var maxWins = Math.max(...statMap.wins);
+    var totalWins = 0;
+    for (let i = 1; i <= 6; i++) {
+        var norm = statMap.wins[i - 1] / maxWins;
+        $(`#stat-bar-${i}`).css('width', `${norm * 100}%`);
+        $(`#stat-counter-${i}`).text(statMap.wins[i - 1]);
+        totalWins += statMap.wins[i - 1];
+    }
+    $(`#stats-win-rate`).text(parseInt(totalWins / statMap.total * 100));
+}
+
 function showInfo() {
     $('#info-button').text("Close");
     $('#info-button').attr("onclick", "showGame()");
@@ -171,6 +205,7 @@ function showInfo() {
     $('#stats-container').hide();
 }
 function showStats() {
+    generateStats();
     $('#stats-button').text("Close");
     $('#stats-button').attr("onclick", "showGame()");
     $('#info-button').css('visibility', 'hidden');
