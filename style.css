@@ -4,9 +4,12 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: "noto sans Mono", monospace;
+    letter-spacing: -0.03125em;
 }
 
 .toolbar {
+    font-size: 10pt;
     background-color: #383838;
     padding: 0.25em 0.25em;
     display: grid;
@@ -29,7 +32,6 @@ body {
 .game-name-container {
     text-align: center;
     color: #f8f8f8;
-    font-family: monospace;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +43,6 @@ body {
 
 .content-container {
     color: #d8d8d8;
-    font-family: monospace;
     font-size: 12pt;
     overflow-y: scroll;
     display: flex;
@@ -82,7 +83,9 @@ body {
 button {
     background-color: #d8d8d8;
     color: #181818;
-    font-family: monospace;
+    font-family: inherit;
+    font-size: 10pt;
+    letter-spacing: inherit;
 }
 
 .share-container > button:disabled,
@@ -155,8 +158,9 @@ button {
 
 .input-container > input {
     flex: 1 1 auto;
-    font-family: monospace;
+    font-family: inherit;
     font-size: 12pt;
+    letter-spacing: inherit;
     color-scheme: dark;
 }
 
@@ -179,7 +183,7 @@ button {
 }
 
 .ui-menu {
-    font-family: monospace;
+    font-family: inherit;
     font-size: 12pt;
     color: #d8d8d8;
     margin: 0 1em;
