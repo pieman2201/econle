@@ -2,8 +2,18 @@ const DATA = JSON.parse(decodeURIComponent(window.atob(BLOB)));
 const INITIAL_DATE = new Date(2022, 4, 18, 23, 59, 59, 999);
 const MIN_RANK = DATA[0].rank;
 const MAX_RANK = DATA[DATA.length - 1].rank;
-const GAME_NUMBER = Math.ceil((new Date() - INITIAL_DATE) / (1000 * 60 * 60 * 24));
 
+const TODAY = new Date();
+function getGameNumber(date) {
+    return Math.ceil(
+        (
+            (date - (date.getTimezoneOffset() * 60 * 1000)) -
+            (INITIAL_DATE - (INITIAL_DATE.getTimezoneOffset() * 60 * 1000))
+        ) / (1000 * 60 * 60 * 24)
+    );
+
+}
+const GAME_NUMBER = getGameNumber(TODAY);
 
 var statMap = {
     total: 0,
@@ -19,6 +29,7 @@ function getGameNumberCountry(gameNumber) {
             var historicalGuesses = JSON.parse(Cookies.get(i));
             if (historicalGuesses.length > 0) {
                 var lastGuess = historicalGuesses.slice(-1)[0]
+                // doesn't zero out statMap so shouldn't run more than once
                 if (lastGuess.name === historicalCountry.name) {
                     winIdx = Math.min(historicalGuesses.length - 1, 5);
                     statMap.wins[winIdx]++;
