@@ -41,6 +41,74 @@
             <button id="stats-button" onclick="showStats()">Stats</button>
         </div>
         <div class="content-container">
+
+            <div id="info-container" class="overlay-container" style="display: none">
+                <h2>How to play <span class="yellow">econle</span></h2>
+                <div class="nonwide-content-container">
+                    <p>Guess the economy of the day within 6 tries!
+                    <span class="yellow">econle</span> is a daily guessing game where you try to find the country with the given gross domestic product (GDP).</p>
+                    <p>Type your guess and press the <span class="green">submit</span> button.
+                    Suggestions will appear as you type. Each guess must be a valid country/territory
+                    (if the button turns <span class="red">red</span>, it means you've tried to give an invalid answer).</p>
+
+                    <p>With each guess, you'll see two metrics: your <span class="yellow">econle</span> score (the colored
+                    <span class="green">bl</span><span class="yellow">o</span>cks), and your guess distance (the
+                    <span class="magenta">n</span><span class="green">u</span>mbe<span class="blue">r</span> on the right).</p>
+                    <p>Your <span class="yellow">econle</span> score represents how good your guess is; it's calculated from the
+                    difference in GDP ranks between your guess and the target country. Your guess distance is the difference
+                    between your guess GDP and the target in absolute terms.<p>
+                    <p>For example, let's assume today's country is <span class="red">Japan</span> with a GDP of
+                    <span class="green">$</span>5.05<span class="blue">T</span>. If you guess <span class="cyan">Moldova</span>, you'll see this:</p>
+                    <div class="sample-guess-container">
+                        <div class="guess-name-container"><div class="guess-name">Moldova</div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
+                        <div class="guess-diff">
+                            <span class="direction magenta">-</span>
+                            <span class="currency green">$</span>
+                            <span class="value">5.04</span>
+                            <span class="unit blue">T</span>
+                        </div>
+                    </div>
+                    <span class="red">Japan</span> is ranked as the 3rd largest economy in the world, whereas <span class="cyan">Moldova</span>
+                    is ranked much lower, so this guess won't have a great <span class="yellow">econle</span> score. The GDP of
+                    <span class="cyan">Moldova</span> is <span class="green">$</span>5.04<span class="blue">T</span>
+                    <span class="magenta">less</span> than that of <span class="red">Japan</span>, as shown on the right.
+                    <p>If you guess <span class="blue">United States</span>, you'll see this:</p>
+                    <div class="sample-guess-container">
+                        <div class="guess-name-container"><div class="guess-name">United States</div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
+                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
+                        <div class="guess-diff">
+                            <span class="direction magenta">+</span>
+                            <span class="currency green">$</span>
+                            <span class="value">15.8</span>
+                            <span class="unit blue">T</span>
+                        </div>
+                    </div>
+                    <p>As the largest economy in the world, the <span class="blue">US</span> GDP is much <span class="magenta">higher</span>
+                    than that of <span class="red">Japan</span>, so the absolute difference is greater than the first guess.
+                    However, because the ranks of the two economies are so similar (<span class="blue">1</span> vs. <span class="red">3</span>),
+                    the <span class="yellow">econle</span> score is actually much better!</p>
+                </div>
+                <button id="play-button" class="nonwide-content-container" onclick="showGame()">Let's play!</button>
+                <h2>About <span class="yellow">econle</span></h2>
+                <div class="nonwide-content-container">
+                    <p>This game was inspired by <a href="https://www.powerlanguage.co.uk/wordle/" class="magenta">Wordle</a>,
+                    a 6-attempt daily word guessing challenge. Further inspiration came from
+                    <a href="https://worldle.teuteuf.fr/" class="cyan">Worldle</a>, a geography-based variant.</p>
+                    <p><span class="yellow">econle</span> was developed by <a href="https://ishankam.at/" class="blue">Ishan Kamat</a>, with
+                    source code available on <a href="https://github.com/pieman2201/econle" class="green">GitHub</a>.</p>
+                    <p>Data source is the World Bank's 2020 nominal GDP estimates.</p>
+                </div>
+            </div>
+
             <div id="game-container" class="nonwide-content-container" style="visibility: hidden">
                 <div class="target-container">
                     <p id="target-name" class="magenta" style=""></p>
@@ -131,69 +199,7 @@
                     <button id="share" style="display: none" onclick="copyGame()">Share</button>
                 </div>
             </div>
-            <div id="info-container" class="overlay-container" style="display: none">
-                <h2>How to play <span class="yellow">econle</span></h2>
-                <div class="nonwide-content-container">
-                    <p>Guess the economy of the day within 6 tries!</p>
-                    <p>Type your guess and press the <span class="green">submit</span> button.
-                    Suggestions will appear as you type. Each guess must be a valid country/territory
-                    (if the button turns <span class="red">red</span>, it means you've tried to give an invalid answer).</p>
 
-                    <p>With each guess, you'll see two metrics: your <span class="yellow">econle</span> score (the colored
-                    <span class="green">bl</span><span class="yellow">o</span>cks), and your guess distance (the
-                    <span class="magenta">n</span><span class="green">u</span>mbe<span class="blue">r</span> on the right).</p>
-                    <p>Your <span class="yellow">econle</span> score represents how good your guess is; it's calculated from the
-                    difference in GDP ranks between your guess and the target country. Your guess distance is the difference
-                    between your guess GDP and the target in absolute terms.<p>
-                    <p>For example, let's assume today's country is <span class="red">Japan</span> with a GDP of
-                    <span class="green">$</span>5.05<span class="blue">T</span>. If you guess <span class="cyan">Moldova</span>, you'll see this:</p>
-                    <div class="sample-guess-container">
-                        <div class="guess-name-container"><div class="guess-name">Moldova</div></div>
-                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq gray" style="opacity: 1"></div></div>
-                        <div class="guess-diff">
-                            <span class="direction magenta">-</span>
-                            <span class="currency green">$</span>
-                            <span class="value">5.04</span>
-                            <span class="unit blue">T</span>
-                        </div>
-                    </div>
-                    <span class="red">Japan</span> is ranked as the 3rd largest economy in the world, whereas <span class="cyan">Moldova</span>
-                    is ranked much lower, so this guess won't have a great <span class="yellow">econle</span> score. The GDP of
-                    <span class="cyan">Moldova</span> is <span class="green">$</span>5.04<span class="blue">T</span>
-                    <span class="magenta">less</span> than that of <span class="red">Japan</span>, as shown on the right.
-                    <p>If you guess <span class="blue">United States</span>, you'll see this:</p>
-                    <div class="sample-guess-container">
-                        <div class="guess-name-container"><div class="guess-name">United States</div></div>
-                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq green" style="opacity: 1"></div></div>
-                        <div class="guess-sq-container"><div class="guess-sq yellow" style="opacity: 1"></div></div>
-                        <div class="guess-diff">
-                            <span class="direction magenta">+</span>
-                            <span class="currency green">$</span>
-                            <span class="value">15.8</span>
-                            <span class="unit blue">T</span>
-                        </div>
-                    </div>
-                    <p>As the largest economy in the world, the <span class="blue">US</span> GDP is much <span class="magenta">higher</span>
-                    than that of <span class="red">Japan</span>, so the absolute difference is greater than the first guess.
-                    However, because the ranks of the two economies are so similar (<span class="blue">1</span> vs. <span class="red">3</span>),
-                    the <span class="yellow">econle</span> score is actually much better!</p>
-                </div>
-                <h2>About <span class="yellow">econle</span></h2>
-                <div class="nonwide-content-container">
-                    <p>This game was inspired by <a href="https://www.powerlanguage.co.uk/wordle/" class="magenta">Wordle</a>,
-                    a 6-attempt daily word guessing challenge. Further inspiration came from
-                    <a href="https://worldle.teuteuf.fr/" class="cyan">Worldle</a>, a geography-based variant.</p>
-                    <p><span class="yellow">econle</span> was developed by <a href="https://ishankam.at/" class="blue">Ishan Kamat</a>, with
-                    source code available on <a href="https://github.com/pieman2201/econle" class="green">GitHub</a>.</p>
-                </div>
-            </div>
             <div id="stats-container" class="overlay-container" style="display: none">
                 <h2>Statistics</h2>
                 <div class="nonwide-content-container">
